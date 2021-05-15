@@ -4,10 +4,10 @@
         <img class="d-block mx-auto mb-4" src="../assets/coronavirus.svg" alt="Logo" width="72" height="72">
         <h1 class="display-5 fw-bold mb-3">¡Bienvenido a Visual Covid!</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Visual Covid es una Web-App que te permite visualizar mediante gráficas
-                interactivas, diferentes datos relacionados con la evolución de la COVID-19 en España.</p>
+            <p class="lead mb-4">Visual Covid es una Web-App que te permite visualizar mediante gráficos
+                interactivos, diferentes datos relacionados con la evolución de la COVID-19 en España.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Empieza ahora</button>
+                <router-link to="/datos" class="btn btn-primary btn-lg px-4 gap-3" tag="button">Empieza ahora</router-link>
                 <router-link to="/acercade" class="btn btn-outline-secondary btn-lg px-4" tag="button">Sobre nosotros</router-link>
             </div>
         </div>
@@ -22,9 +22,7 @@
         <div>
           <h2>Total de Datos Históricos</h2>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="icon-link">
-            Empieza ahora
-          </a>
+          <router-link to="/datos" class="icon-link">Empieza ahora</router-link>
         </div>
       </div>
       <div class="col d-flex align-items-start">
@@ -34,9 +32,7 @@
         <div>
           <h2>Vacunas Administradas</h2>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="icon-link">
-            Empieza ahora
-          </a>
+          <router-link to="/datos" class="icon-link">Empieza ahora</router-link>
         </div>
       </div>
       <div class="col d-flex align-items-start">
@@ -46,9 +42,7 @@
         <div>
           <h2>Filtros personalizados</h2>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="icon-link">
-            Empieza ahora
-          </a>
+          <router-link to="/datos" class="icon-link">Empieza ahora</router-link>
         </div>
       </div>
     </div>

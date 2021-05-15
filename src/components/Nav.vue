@@ -7,6 +7,7 @@
       </a>
       <ul class="nav nav-pills">
         <li class="nav-item"><router-link to="/" class="nav-link text-dark" active-class="active text-white" exact>Inicio</router-link></li>
+        <li class="nav-item"><router-link to="/datos" class="nav-link text-dark" active-class="active text-white" exact>Ver Datos</router-link></li>
         <li class="nav-item"><router-link to="/acercade" class="nav-link text-dark" active-class="active text-white" exact>Acerca De</router-link></li>
       </ul>
     </header>

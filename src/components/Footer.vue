@@ -15,24 +15,24 @@
         <div class="col-6 col-lg-2 offset-lg-1 mb-3">
             <h5>Enlaces</h5>
             <ul class="list-unstyled">
-            <li class="mb-2"><a href="/">Inicio</a></li>
-            <li class="mb-2"><a href="/docs/5.0/">Docs</a></li>
-            <li class="mb-2"><a href="/docs/5.0/examples/">Acerca de</a></li>
+            <li class="mb-2"><router-link to="/">Inicio</router-link></li>
+            <li class="mb-2"><router-link to="/datos">Ver Datos</router-link></li>
+            <li class="mb-2"><router-link to="/acercade">Acerca De</router-link></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
             <h5>Tecnologías</h5>
             <ul class="list-unstyled">
-            <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Vue</a></li>
-            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap</a></li>
-            <li class="mb-2"><a href="https://github.com/twbs/icons">Chart.js</a></li>
+            <li class="mb-2"><a href="https://vuejs.org/" target="_blank" rel="noopener">Vue</a></li>
+            <li class="mb-2"><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a></li>
+            <li class="mb-2"><a href="https://www.chartjs.org/" target="_blank" rel="noopener">Chart.js</a></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
             <h5>Fuentes</h5>
             <ul class="list-unstyled">
-            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
-            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
+            <li class="mb-2"><a href="https://www.datadista.com/" target="_blank" rel="noopener">Datadista</a></li>
+            <li class="mb-2"><a href="https://github.com/datadista/datasets/tree/master/COVID%2019" target="_blank" rel="noopener">Dataset</a></li>
             </ul>
         </div>
         </div>

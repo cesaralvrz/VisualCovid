@@ -9,7 +9,12 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: Routes,
-  mode: 'history'
+  mode: 'history',
+
+  // Volver a la parte superior al cambiar de ruta
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
 
 Vue.config.productionTip = false
