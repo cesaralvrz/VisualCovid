@@ -1,18 +1,37 @@
 <template>
 <div>
     <div class="row">
-      <div class="col text-center mt-5">
-        <h1>Visualización COVID-19 en España</h1>
-        <template v-if="arrCasosPcr[0]">
-            <p>{{arrCasosPcr[0].total}}</p>
-            <p>{{arrCasosPcr[0].fecha}}</p>
-        </template>
+      <div class="col text-center mt-5 mb-3">
+        <h1>COVID-19 en España</h1>
       </div>
+    </div>
+    <div class="card text-center">
+        <template v-if="arrCasosPcr[0]">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card-body" id="mycontent-left">
+                        <h3 class="card-title text-primary mt-3">Total de Casos:</h3>
+                        <!-- Formateo a Número para luego agregar un separador de millares -->
+                        <h4 class="card-title">{{Number(arrCasosPcr[0].total).toLocaleString()}}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary mt-3">Total de Fallecimientos:</h3>
+                        <!-- Formateo a Número para luego agregar un separador de millares -->
+                        <h4 class="card-title">{{Number(arrFallecimientos[0].total).toLocaleString()}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                Última fecha registrada: {{arrCasosPcr[0].date}}
+            </div>
+        </template>
     </div>
 
     <div class="row mt-5" v-if="arrCasosPcr.length > 0">
       <div class="col">
-        <h2>Casos Confirmados</h2>
+        <h2>Historial Casos Confirmados</h2>
         <line-chart 
         :chartData="arrCasosPcr" 
         :options="chartOptions" 
@@ -24,7 +43,7 @@
 
     <div class="row mt-5" v-if="arrFallecimientos.length > 0">
       <div class="col">
-        <h2>Número de Fallecidos</h2>
+        <h2>Historial Número de Fallecidos</h2>
         <line-chart 
         :chartData="arrFallecimientos" 
         :options="chartOptions" 
@@ -69,36 +88,81 @@ export default {
     },
     async created(){
         const datos = await axios.get('https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/nacional_covid19.csv');
+        const datosVacunas = await axios.get('https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/ccaa_vacunas.csv');
         // aconvert.com/es/document/csv-to-json/
+        
         const input = datos.data
+        // Cambiamos los espacios con "_"
+        const inputVacunas = datosVacunas.data.replace(/ /g,"_");
 
         // Csv a JSON
+        // Datos
         const lines = input.split('\n') 
         const header = lines[0].split(',') 
         const output = lines.slice(1).map(line => {
             const fields = line.split(',') 
             return Object.fromEntries(header.map((h, i) => [h, fields[i]]))
         })
+        // Vacunas 
+        const linesVacunas = inputVacunas.split('\n') 
+        const headerVacunas = linesVacunas[0].split(',') 
+        const outputVacunas = linesVacunas.slice(1).map(line => {
+            const fieldsVacunas = line.split(',') 
+            return Object.fromEntries(headerVacunas.map((h, i) => [h, fieldsVacunas[i]]))
+        })
 
-        // última fecha elimanada (undefined)
+        // última fecha eliminada (undefined)
         output.pop()
+        outputVacunas.pop()
 
         Object.values(output).forEach(d => {
 
-            var fecha = moment(d.fecha, "YYYY-MM-DD").format("MM/DD/YYYY");
+            var date = moment(d.fecha, "YYYY-MM-DD").format("MM/DD/YYYY");
 
-            const {
+            var {
                 casos_pcr,
                 fallecimientos,
             } = d;
 
-            this.arrCasosPcr.unshift({total: casos_pcr, fecha});
-            this.arrFallecimientos.unshift({fecha, total: fallecimientos});
+            this.arrCasosPcr.unshift({total: casos_pcr, date});
+            this.arrFallecimientos.unshift({date, total: fallecimientos});
 
         })
 
-        //this.arrCasosPcr.shift()
+        Object.values(outputVacunas).forEach(v => {
+
+            var dateVacuna = moment(v.['Fecha_publicación'], "YYYY-MM-DD").format("MM/DD/YYYY");
+
+            console.log(dateVacuna)
+
+            var {
+                CCAA,
+                Dosis_administradas,
+                // Personas con al menos una vacuna
+                Porcentaje_con_pauta_completa,
+                // Persona con pauta completa
+                Fecha_de_la_última_vacuna_registrada,
+            } = v;
+
+            console.log(CCAA)
+            console.log(Dosis_administradas)
+            console.log(Porcentaje_con_pauta_completa)
+            console.log(Fecha_de_la_última_vacuna_registrada)
+            
+
+
+        })
+
         
+        //this.arrCasosPcr.shift()   
+    },
+    methods: {
     }
 }
 </script>
+
+<style>
+#mycontent-left {
+  border-right: 1px solid #e4e4e4;
+}
+</style>
