@@ -7,8 +7,8 @@
             <p class="lead mb-4">Visual Covid es una Web-App que te permite visualizar mediante gráficos
                 interactivos, diferentes datos relacionados con la evolución de la COVID-19 en España.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <router-link to="/datos" class="btn btn-primary btn-lg px-4 gap-3" tag="button">Empieza ahora</router-link>
-                <router-link to="/acercade" class="btn btn-outline-secondary btn-lg px-4" tag="button">Sobre nosotros</router-link>
+                <router-link to="/datos" class="btn btn-primary btn-lg px-4 gap-3" tag="button">Datos COVID</router-link>
+                <router-link to="/vacunas" class="btn btn-outline-secondary btn-lg px-4" tag="button">Datos Vacunas</router-link>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
         <div>
           <h2>Vacunas Administradas</h2>
           <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <router-link to="/datos" class="icon-link">Empieza ahora</router-link>
+          <router-link to="/vacunas" class="icon-link">Empieza ahora</router-link>
         </div>
       </div>
       <div class="col d-flex align-items-start">

@@ -29,29 +29,39 @@
         </template>
     </div>
 
-    <div class="row mt-5" v-if="arrCasosPcr.length > 0">
-      <div class="col">
-        <h2>Historial Casos Confirmados</h2>
-        <line-chart 
-        :chartData="arrCasosPcr" 
-        :options="chartOptions" 
-        :chartColors="casosColors" 
-        label="casos">
-        </line-chart>
-      </div>
+    <div class="dropdown mt-5">
+        <h5 class="text-secondary">Seleccione una opción:</h5>
+        <b-form-select class="btn btn-primary dropdown-toggle" type="button" v-model="selected" @change="changeHandler" :options="options"></b-form-select>
     </div>
 
-    <div class="row mt-5" v-if="arrFallecimientos.length > 0">
-      <div class="col">
-        <h2>Historial Número de Fallecidos</h2>
-        <line-chart 
-        :chartData="arrFallecimientos" 
-        :options="chartOptions" 
-        :chartColors="fallecidosColors" 
-        label="fallecimientos">
-        </line-chart>
-      </div>
+    <div v-if="selected === 'Casos'">
+        <div class="row mt-3" v-if="arrCasosPcr.length > 0">
+        <div class="col">
+            <h2>Historial Casos Confirmados</h2>
+            <line-chart 
+            :chartData="arrCasosPcr" 
+            :options="chartOptions" 
+            :chartColors="casosColors" 
+            label="casos">
+            </line-chart>
+        </div>
+        </div>
     </div>
+
+    <div>
+        <div class="row mt-3" v-if="arrFallecimientos.length > 0">
+            <div class="col" v-if="selected !== 'Casos'">
+                <h2>Historial Número de Fallecidos</h2>
+                <line-chart 
+                :chartData="arrFallecimientos" 
+                :options="chartOptions" 
+                :chartColors="fallecidosColors" 
+                label="fallecimientos">
+                </line-chart>
+            </div>
+        </div>
+    </div>
+
 </div>
 </template>
 <script>
@@ -66,6 +76,11 @@ export default {
     },
     data() {
         return {
+            selected: 'Casos',
+            options: [
+                { value: "Casos", text: 'Casos Confirmados'},
+                { value: "Muertes", text: 'Fallecimientos' },
+            ],
             arrCasosPcr: [],
             casosColors: {
                 borderColor: "#077187",
@@ -88,32 +103,20 @@ export default {
     },
     async created(){
         const datos = await axios.get('https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/nacional_covid19.csv');
-        const datosVacunas = await axios.get('https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/ccaa_vacunas.csv');
         // aconvert.com/es/document/csv-to-json/
         
         const input = datos.data
-        // Cambiamos los espacios con "_"
-        const inputVacunas = datosVacunas.data.replace(/ /g,"_");
 
         // Csv a JSON
-        // Datos
         const lines = input.split('\n') 
         const header = lines[0].split(',') 
         const output = lines.slice(1).map(line => {
             const fields = line.split(',') 
             return Object.fromEntries(header.map((h, i) => [h, fields[i]]))
         })
-        // Vacunas 
-        const linesVacunas = inputVacunas.split('\n') 
-        const headerVacunas = linesVacunas[0].split(',') 
-        const outputVacunas = linesVacunas.slice(1).map(line => {
-            const fieldsVacunas = line.split(',') 
-            return Object.fromEntries(headerVacunas.map((h, i) => [h, fieldsVacunas[i]]))
-        })
 
         // última fecha eliminada (undefined)
         output.pop()
-        outputVacunas.pop()
 
         Object.values(output).forEach(d => {
 
@@ -128,32 +131,7 @@ export default {
             this.arrFallecimientos.unshift({date, total: fallecimientos});
 
         })
-
-        Object.values(outputVacunas).forEach(v => {
-
-            var dateVacuna = moment(v.['Fecha_publicación'], "YYYY-MM-DD").format("MM/DD/YYYY");
-
-            console.log(dateVacuna)
-
-            var {
-                CCAA,
-                Dosis_administradas,
-                // Personas con al menos una vacuna
-                Porcentaje_con_pauta_completa,
-                // Persona con pauta completa
-                Fecha_de_la_última_vacuna_registrada,
-            } = v;
-
-            console.log(CCAA)
-            console.log(Dosis_administradas)
-            console.log(Porcentaje_con_pauta_completa)
-            console.log(Fecha_de_la_última_vacuna_registrada)
-            
-
-
-        })
-
-        
+       
         //this.arrCasosPcr.shift()   
     },
     methods: {

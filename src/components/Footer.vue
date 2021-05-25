@@ -16,7 +16,8 @@
             <h5>Enlaces</h5>
             <ul class="list-unstyled">
             <li class="mb-2"><router-link to="/">Inicio</router-link></li>
-            <li class="mb-2"><router-link to="/datos">Ver Datos</router-link></li>
+            <li class="mb-2"><router-link to="/datos">Datos COVID</router-link></li>
+            <li class="mb-2"><router-link to="/datos">Datos Vacunas</router-link></li>
             <li class="mb-2"><router-link to="/acercade">Acerca De</router-link></li>
             </ul>
         </div>

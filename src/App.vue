@@ -3,12 +3,6 @@
     <div class="container">
       <Nav></Nav>
       <router-view></router-view>
-      <!-- <div class="row mt-5">
-        <div class="col">
-          <h2 class="text-center">Prueba de gráfica de barras</h2>
-          <bar-chart></bar-chart>
-        </div>
-      </div> -->
     </div>
     <Footer/>
   </div>
