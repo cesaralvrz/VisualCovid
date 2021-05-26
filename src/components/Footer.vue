@@ -17,7 +17,7 @@
             <ul class="list-unstyled">
             <li class="mb-2"><router-link to="/">Inicio</router-link></li>
             <li class="mb-2"><router-link to="/datos">Datos COVID</router-link></li>
-            <li class="mb-2"><router-link to="/datos">Datos Vacunas</router-link></li>
+            <li class="mb-2"><router-link to="/vacunas">Datos Vacunas</router-link></li>
             <li class="mb-2"><router-link to="/acercade">Acerca De</router-link></li>
             </ul>
         </div>

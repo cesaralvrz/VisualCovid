@@ -2,7 +2,7 @@
 <div>
     <main v-if="!loading">
         <div class="row">
-        <div class="col text-center mt-5 mb-3">
+        <div class="col text-center mt-4 mb-3">
             <h1>Vacunación en España</h1>
         </div>
         </div>
