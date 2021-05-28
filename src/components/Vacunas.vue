@@ -27,17 +27,12 @@
                 </div>
             </template>
         </div>
-
         <div class="row mt-5" v-if="arrDosis.length > 0">
-        <div class="col">
-            <h2>Historial Dosis Administradas</h2>
-            <line-chart 
-            :chartData="arrDosis" 
-            :options="chartOptions" 
-            :chartColors="casosColors" 
-            label="Dosis administradas">
-            </line-chart>
-        </div>
+            <div class="col">
+                <bar-chart
+                >
+                </bar-chart>
+            </div>
         </div>
     </main>
 
@@ -45,7 +40,7 @@
         <div class="row">
         <div class="col text-center mt-5 mb-3">
             <h5>Cargando Datos...</h5>
-            <img :src="imagenCarga" alt="">
+            <img :src="imagenCarga" alt="Reloj de arena">
         </div>
         </div>
     </main>
@@ -56,16 +51,20 @@
 import axios from 'axios';
 import moment from 'moment';
 
-import LineChart from './LineChart';
+import BarChart from './BarChart';
+
 
 export default {
     components: {
-        LineChart
+        BarChart,
     },
     data() {
         return {
             loading: true,
-            titulo: 'España',
+            dataDou: [40, 30, 20, 10],
+            douColors: {
+                backgroundColor: ["#339AF7", "#f79d65", "#EC3D67", "#69c26a"] 
+            },
             comunidades: [],
             imagenCarga: require('../assets/reloj.gif'),
             arrDosis: [],
@@ -86,6 +85,14 @@ export default {
             chartOptions: {
                 responsive: true,
                 maintainAspectRatio: false,
+                scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                    },
             }
         }
     },
@@ -125,13 +132,18 @@ export default {
             
 
             this.comunidades.unshift({comunidad: CCAA});
-            this.arrDosis.unshift({total: Dosis_administradas, dateVacuna});
+            this.arrDosis.unshift({total: Dosis_administradas, dateVacuna, CCAA});
             this.arrPersonaUna.unshift({total: Porcentaje_con_pauta_completa, dateVacuna});
             this.arrPersonaCom.unshift({total: Fecha_de_la_última_vacuna_registrada, dateVacuna});
             
 
 
         })
+
+        // 0 = España, 2 = Melilla, 3 = Ceuta, 4 = PV, 5 = Navarra, 6 = Murcia
+        // 7 = Madrid, 8 = La Rioja, 9 = Galicia, 10 = Extremadura, 11 = Valencia
+        // 12 = Cataluña, 13 = Castilla La Mancha, 14 = Catilla Leon, 15 = Cantabria
+        // 16 = Canarias, 17 = Baleares, 18 = Asturias, 19 = Aragón, 20 = Andalucia
 
         
         //this.arrCasosPcr.shift()   

@@ -23,7 +23,7 @@ export default {
     } = this.chartColors;
     this.renderChart(
       {
-        labels: ["Casos", "Muertes"],
+        labels: ["Casos Confirmados", "Fallecidos", "Ingresos UCI", "Hospitalizados"],
         datasets: [
           {
             label: this.labels,

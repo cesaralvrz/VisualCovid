@@ -4,27 +4,62 @@ export default {
     extends: Bar,
     data: () => ({
     chartdata: {
-      labels: ['Enero', 'Febrero'],
-      datasets: [
-        {
-          label: 'Datos Uno',
-          backgroundColor: '#42b883',
-          data: [39, 39]
-        },
-        {
-          label: 'Datos Dos',
-          backgroundColor: '#35495e',
-          data: [39, 39]
-        },
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false
+      labels: {
+        type: Array
+      },
+      chartData: {
+        type: Array
+      },
+      options: {
+        type: Object
+      },
     }
   }),
-  mounted () {
-    this.renderChart(this.chartdata, this.options)
+  mounted() {
+    this.renderChart(
+      {
+        labels: [
+          "Andalucia",
+          "Aragón",
+          "Asturias",
+          "Baleares",
+          "Canarias",
+          "Cantabria",
+          "Castilla y León",
+          "C.La Mancha",
+          "Cataluña",
+          "Ceuta",
+          "Extremadura",
+          "Galicia",
+          "La Rioja",
+          "C.Madrid",
+          "Melilla",
+          "Murcia",
+          "Navarra",
+          "País Vasco",
+          "Valencia",
+        ],
+        datasets: [
+          {
+            label: "Población",
+            backgroundColor: "#f79d65",
+            data: [8427000, 1321000, 1022000, 1188000, 2207000, 581641, 2408000, 2035000, 7566000, 84829, 1065000, 2700000, 313571, 6642000, 84689, 1488000, 649946, 2178000, 4975000]
+          }
+        ]
+      },
+      { 
+        responsive: true, 
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+          {
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+          }, 
+        }
+    );
   }
 }
 </script>

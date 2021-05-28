@@ -35,7 +35,7 @@
                 <doughnut-chart
                 :chartData="dataDou" 
                 :options="chartOptions" 
-                :chartColors="hospColors" 
+                :chartColors="douColors" 
                 >
                 </doughnut-chart>
             </div>
@@ -43,7 +43,7 @@
 
         <hr class="my-4 mt-5">
 
-        <div class="dropdown mt-5">
+        <div class="dropdown mt-4">
             <p id="instruccion" class="text-muted">Seleccione una opción:</p>
             <b-form-select class="btn btn-primary dropdown-toggle" type="button" v-model="selected" :options="options"></b-form-select>
         </div>
@@ -126,6 +126,10 @@ export default {
         return {
             loading: true,
             dataDou: [],
+            douColors: {
+                borderColor: "#FFFFFF",
+                backgroundColor: ["#339AF7", "#f79d65", "#EC3D67", "#69c26a"] 
+            },
             selected: 'Casos',
             options: [
                 { value: "Casos", text: 'Casos Confirmados'},
@@ -135,31 +139,36 @@ export default {
             ],
             arrCasosPcr: [],
             casosColors: {
-                borderColor: "#077187",
-                pointBorderColor: "#0E1428",
-                pointBackgroundColor: "#AFD6AC",
-                backgroundColor: "#74A57F"
+                borderColor: "#013a63",
+                pointBorderColor: "#014f86",
+                pointBackgroundColor: "#a8caff",
+                backgroundColor: "#339AF7"
             },
             arrFallecimientos: [],
             fallecidosColors: {
+                /*
                 borderColor: "#251F47",
                 pointBorderColor: "#260F26",
                 pointBackgroundColor: "#858EAB",
-                backgroundColor: "#858EAB"
-            },
-            arrUci: [],
-            uciColors: {
-                borderColor: "#013a63",
-                pointBorderColor: "#014f86",
-                pointBackgroundColor: "#7ba0d4",
-                backgroundColor: "#507dbc"
-            },
-            arrHospitalizados: [],
-            hospColors: {
+                backgroundColor: "#858EAB" */
                 borderColor: "#c95e4b",
                 pointBorderColor: "#c4694b",
                 pointBackgroundColor: "#fed27b",
                 backgroundColor: "#f79d65"
+            },
+            arrUci: [],
+            uciColors: {
+                borderColor: "#752136",
+                pointBorderColor: "#ad3150",
+                pointBackgroundColor: "#ed91a6",
+                backgroundColor: "#EC3D67" 
+            },
+            arrHospitalizados: [],
+            hospColors: {
+                borderColor: "#2f572e",
+                pointBorderColor: "#0E1428",
+                pointBackgroundColor: "#AFD6AC",
+                backgroundColor: "#69c26a"
             },
             chartOptions: {
                 responsive: true,
@@ -181,7 +190,7 @@ export default {
             return Object.fromEntries(header.map((h, i) => [h, fields[i]]))
         })
 
-        // última fecha eliminada (undefined)
+        // Última fecha eliminada (undefined)
         output.pop()
 
         Object.values(output).forEach(d => {
@@ -199,16 +208,15 @@ export default {
             this.arrFallecimientos.unshift({date, total: fallecimientos});
             this.arrUci.unshift({date, total: ingresos_uci});
             this.arrHospitalizados.unshift({date, total: hospitalizados});
-
         })
 
-        // Eliminamos los valores de cero
+        // Eliminamos los valores de cero de los arrays
         this.arrUci = this.arrUci.filter(i => i.total);
         this.arrHospitalizados = this.arrHospitalizados.filter(i => i.total);
 
-        this.dataDou.unshift(this.arrCasosPcr[0].total, this.arrFallecimientos[0].total);
 
-        console.log(this.dataDou)
+        // Añadimos los valores a la gráfica de doughnut
+        this.dataDou.unshift(this.arrCasosPcr[0].total, this.arrFallecimientos[0].total, this.arrUci[0].total, this.arrHospitalizados[0].total);
          
     },
     methods: {

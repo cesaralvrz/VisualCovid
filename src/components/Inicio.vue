@@ -21,8 +21,8 @@
         </div>
         <div>
           <h2>Total de Datos Históricos</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <router-link to="/datos" class="icon-link">Empieza ahora</router-link>
+          <p>Visual Covid te permite visualizar los datos históricos relacionados con la COVID-19 (Casos Confirmados, Fallecimientos, Hospitalizados e Ingresos en la UCI). </p>
+          <router-link to="/datos" class="icon-link">Ver Datos COVID</router-link>
         </div>
       </div>
       <div class="col d-flex align-items-start">
@@ -31,8 +31,8 @@
         </div>
         <div>
           <h2>Vacunas Administradas</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <router-link to="/vacunas" class="icon-link">Empieza ahora</router-link>
+          <p>La aplicación tambien te permite visualizar la evolución del proceso de vacunación de la COVID-19 a nivel Nacional y también por Comunidad Autónoma. </p>
+          <router-link to="/vacunas" class="icon-link">Ver Datos Vacunas</router-link>
         </div>
       </div>
       <div class="col d-flex align-items-start">
@@ -40,8 +40,8 @@
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" class="bi" width="3em" height="3em" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><linearGradient xmlns="http://www.w3.org/2000/svg" id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="256" x2="256" y1="421" y2="91"><stop stop-opacity="1" stop-color="#0275d8" offset="0"/><stop stop-opacity="1" stop-color="#0275d8" offset="1"/></linearGradient><g xmlns="http://www.w3.org/2000/svg"><g><g><path d="m467 121c-19.4 0-35.972 12.341-42.279 29.584-38.613-2.656-64.661-17.612-89.929-32.122-24.593-14.123-47.822-27.462-78.792-27.462s-54.199 13.339-78.792 27.462c-25.268 14.51-51.316 29.467-89.929 32.122-6.307-17.243-22.879-29.584-42.279-29.584-24.813 0-45 20.187-45 45v30c0 .007.001.015.001.022.002 1.977.421 4.053 1.226 5.916.004.009.006.017.01.026 12.147 28.026 37.614 72.119 66.246 108.338 25.077 31.724 51.75 57.084 79.278 75.378 35.265 23.437 72.019 35.32 109.239 35.32s73.974-11.883 109.239-35.32c27.528-18.294 54.201-43.655 79.278-75.378 28.07-35.508 53.735-79.471 66.246-108.338.038-.125 1.231-2.604 1.235-5.935 0-.01.001-.019.001-.029v-30c.001-24.813-20.186-45-44.999-45zm-407 126.515c-16.32-26.068-26.609-47.417-30-54.752v-26.763c0-8.271 6.729-15 15-15s15 6.729 15 15zm362 42.888c-41.349 52.716-98.744 100.597-166 100.597-67.266 0-124.667-47.901-166-100.597v-109.928c45.047-3.208 75.22-20.534 102.147-35.997 21.938-12.598 40.884-23.478 63.853-23.478s41.915 10.88 63.853 23.478c26.928 15.463 57.101 32.79 102.147 35.997zm60-97.64c-3.391 7.334-13.68 28.684-30 54.752v-81.515c0-8.271 6.729-15 15-15s15 6.729 15 15zm-196 48.237h-15v-15c0-8.284-6.716-15-15-15s-15 6.716-15 15v15h-15c-8.284 0-15 6.716-15 15s6.716 15 15 15h15v15c0 8.284 6.716 15 15 15s15-6.716 15-15v-15h15c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="url(#SVGID_1_)" data-original="url(#SVGID_1_)" style=""/></g></g></g></g></svg>
         </div>
         <div>
-          <h2>Filtros personalizados</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+          <h2>Filtros Personalizados</h2>
+          <p>Visual Covid te permite utilizar filtros personalizados y seleccionar diferentes opciones para poder visualizar los datos específicos que busca el usuario final.</p>
           <router-link to="/datos" class="icon-link">Empieza ahora</router-link>
         </div>
       </div>
