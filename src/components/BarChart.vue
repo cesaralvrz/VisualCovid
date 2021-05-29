@@ -1,6 +1,7 @@
 <script>
 import { Bar } from 'vue-chartjs'
 export default {
+    props: ['vacunasAdmin'],
     extends: Bar,
     data: () => ({
     chartdata: {
@@ -28,23 +29,28 @@ export default {
           "Castilla y León",
           "C.La Mancha",
           "Cataluña",
-          "Ceuta",
+          "C.Valenciana",
           "Extremadura",
           "Galicia",
           "La Rioja",
           "C.Madrid",
-          "Melilla",
-          "Murcia",
+          "Rd.Murcia",
           "Navarra",
           "País Vasco",
-          "Valencia",
+          "Ceuta",
+          "Melilla",
         ],
         datasets: [
           {
             label: "Población",
             backgroundColor: "#f79d65",
-            data: [8427000, 1321000, 1022000, 1188000, 2207000, 581641, 2408000, 2035000, 7566000, 84829, 1065000, 2700000, 313571, 6642000, 84689, 1488000, 649946, 2178000, 4975000]
-          }
+            data: ["8427000", "1321000", "1022000", "1188000", "2207000", "581641", "2408000", "2035000", "7566000", "4975000", "1065000", "2700000", "313571", "6642000", "1488000", "649946", "2178000", "84829", "84689"]
+          },
+          {
+            label: "Dosis Administradas",
+            backgroundColor: "#339AF7",
+            data: this.vacunasAdmin
+          },
         ]
       },
       { 

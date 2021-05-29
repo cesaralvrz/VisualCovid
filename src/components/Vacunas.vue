@@ -18,7 +18,7 @@
                     <div class="col-sm-6">
                         <div class="card-body">
                             <h3 class="card-title text-primary mt-3">Personas con Pauta Completa:</h3>
-                            <h4 class="card-title">{{arrPersonaCom[0].total}}</h4>
+                            <h4 class="card-title">{{arrPersonaCom[0].total}} ({{porcentaje[0]}})</h4>
                         </div>
                     </div>
                 </div>
@@ -30,6 +30,7 @@
         <div class="row mt-5" v-if="arrDosis.length > 0">
             <div class="col">
                 <bar-chart
+                :vacunasAdmin="dataChart"
                 >
                 </bar-chart>
             </div>
@@ -61,7 +62,8 @@ export default {
     data() {
         return {
             loading: true,
-            dataDou: [40, 30, 20, 10],
+            dataChart: [],
+            porcentaje: [],
             douColors: {
                 backgroundColor: ["#339AF7", "#f79d65", "#EC3D67", "#69c26a"] 
             },
@@ -85,14 +87,6 @@ export default {
             chartOptions: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                    },
             }
         }
     },
@@ -116,7 +110,6 @@ export default {
         // última fecha eliminada (undefined)
         outputVacunas.pop()
 
-
         Object.values(outputVacunas).forEach(v => {
 
             var dateVacuna = moment(v.['Fecha_publicación'], "YYYY-MM-DD").format("MM/DD/YYYY");
@@ -127,9 +120,11 @@ export default {
                 Porcentaje_con_pauta_completa,
                 // Persona con pauta completa
                 Fecha_de_la_última_vacuna_registrada,
+                //Porcentaje_sobre_entregadas,
                 CCAA,
             } = v;
-            
+
+
 
             this.comunidades.unshift({comunidad: CCAA});
             this.arrDosis.unshift({total: Dosis_administradas, dateVacuna, CCAA});
@@ -145,8 +140,28 @@ export default {
         // 12 = Cataluña, 13 = Castilla La Mancha, 14 = Catilla Leon, 15 = Cantabria
         // 16 = Canarias, 17 = Baleares, 18 = Asturias, 19 = Aragón, 20 = Andalucia
 
-        
-        //this.arrCasosPcr.shift()   
+        // Bucle para agregar las ultimas dosis de cada comunidad en un array
+        for (let i = 2; i < 21; i++) {
+            this.dataChart.push(this.arrDosis[i].total.replace('.',""));
+        }
+
+        // Bucle para eliminar números con más de un punto
+        for (let i = 0; i < this.dataChart.length; i++) {
+            if(this.dataChart[i].includes(".")){
+                this.dataChart[i] = this.dataChart[i].replace(".","")
+            }
+        }
+
+        // Invertimos el Array para tener orden alfabético
+        this.dataChart.reverse() 
+
+
+        // Asignamos el porcentaje de gente con pauta completa
+        let x = outputVacunas.reverse()
+        this.porcentaje.unshift(x[0].Porcentaje_sobre_entregadas.replace('"','%'))
+
+
+
     },
     methods: {
     }
