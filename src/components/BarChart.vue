@@ -1,7 +1,7 @@
 <script>
 import { Bar } from 'vue-chartjs'
 export default {
-    props: ['vacunasAdmin'],
+    props: ['vacunasAdmin', 'pautaComp'],
     extends: Bar,
     data: () => ({
     chartdata: {
@@ -50,6 +50,11 @@ export default {
             label: "Dosis Administradas",
             backgroundColor: "#339AF7",
             data: this.vacunasAdmin
+          },
+          {
+            label: "Personas con Pauta Completa",
+            backgroundColor: "#69c26a",
+            data: this.pautaComp
           },
         ]
       },

@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-6">
                 <h1 class="display-6 fw-bold lh-1 mb-3">Tecnologías Utilizadas</h1>
-                <p class="lead"> El proyecto está desarrollado mediante el framework Vue.js, la estética de la aplicación esta hecha con de Bootstrap y las gráficas
+                <p class="lead"> El proyecto está desarrollado mediante el framework Vue.js, la estética de la aplicación esta hecha con Bootstrap y las gráficas
                     están creadas por medio de la libería Chart.js. Los datos son recaudados del <a href="https://github.com/datadista/datasets/tree/master/COVID%2019" target="_blank">dataset de la COVID-19</a>
                     del medio <a href="https://www.datadista.com/" target="_blank">Datadista</a>.</p>
             </div>

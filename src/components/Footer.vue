@@ -8,32 +8,32 @@
             <span class="fs-5 text-white">Visual Covid</span>
             </a>
             <ul class="list-unstyled small text-muted">
-            <li class="mb-2">Diseñado y desarrollado por <a href="https://cesaralvarez.js.org/" target="_blank">César Álvarez Llaneza</a> <br> como Trabajo de fin de grado (TFG) para <br>
+            <li class="mb-2">Diseñado y desarrollado por <a class="text-white" href="https://cesaralvarez.js.org/" target="_blank">César Álvarez Llaneza</a> <br> como Trabajo de fin de grado (TFG) para <br>
             el grado de ADET.</li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 offset-lg-1 mb-3">
             <h5>Enlaces</h5>
             <ul class="list-unstyled">
-            <li class="mb-2"><router-link to="/">Inicio</router-link></li>
-            <li class="mb-2"><router-link to="/datos">Datos COVID</router-link></li>
-            <li class="mb-2"><router-link to="/vacunas">Datos Vacunas</router-link></li>
-            <li class="mb-2"><router-link to="/acercade">Acerca De</router-link></li>
+            <li class="mb-2"><router-link class="text-muted" to="/">Inicio</router-link></li>
+            <li class="mb-2"><router-link class="text-muted" to="/datos">Datos COVID</router-link></li>
+            <li class="mb-2"><router-link class="text-muted" to="/vacunas">Datos Vacunas</router-link></li>
+            <li class="mb-2"><router-link class="text-muted" to="/acercade">Acerca De</router-link></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
             <h5>Tecnologías</h5>
             <ul class="list-unstyled">
-            <li class="mb-2"><a href="https://vuejs.org/" target="_blank" rel="noopener">Vue</a></li>
-            <li class="mb-2"><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a></li>
-            <li class="mb-2"><a href="https://www.chartjs.org/" target="_blank" rel="noopener">Chart.js</a></li>
+            <li class="mb-2"><a href="https://vuejs.org/" class="text-muted" target="_blank" rel="noopener">Vue</a></li>
+            <li class="mb-2"><a href="https://getbootstrap.com/" class="text-muted" target="_blank" rel="noopener">Bootstrap</a></li>
+            <li class="mb-2"><a href="https://www.chartjs.org/" class="text-muted" target="_blank" rel="noopener">Chart.js</a></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
             <h5>Fuentes</h5>
             <ul class="list-unstyled">
-            <li class="mb-2"><a href="https://www.datadista.com/" target="_blank" rel="noopener">Datadista</a></li>
-            <li class="mb-2"><a href="https://github.com/datadista/datasets/tree/master/COVID%2019" target="_blank" rel="noopener">Dataset</a></li>
+            <li class="mb-2"><a href="https://www.datadista.com/" class="text-muted" target="_blank" rel="noopener">Datadista</a></li>
+            <li class="mb-2"><a href="https://github.com/datadista/datasets/tree/master/COVID%2019" class="text-muted" target="_blank" rel="noopener">Dataset</a></li>
             </ul>
         </div>
         </div>

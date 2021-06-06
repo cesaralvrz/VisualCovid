@@ -146,11 +146,6 @@ export default {
             },
             arrFallecimientos: [],
             fallecidosColors: {
-                /*
-                borderColor: "#251F47",
-                pointBorderColor: "#260F26",
-                pointBackgroundColor: "#858EAB",
-                backgroundColor: "#858EAB" */
                 borderColor: "#c95e4b",
                 pointBorderColor: "#c4694b",
                 pointBackgroundColor: "#fed27b",
@@ -183,15 +178,19 @@ export default {
         const input = datos.data
 
         // Csv a JSON
-        const lines = input.split('\n') 
-        const header = lines[0].split(',') 
+        const lines = input.split('\n') // 1
+        const header = lines[0].split(',')  // 2
         const output = lines.slice(1).map(line => {
-            const fields = line.split(',') 
-            return Object.fromEntries(header.map((h, i) => [h, fields[i]]))
+            const fields = line.split(',') // 3
+            return Object.fromEntries(header.map((h, i) => [h, fields[i]])) // 4
         })
+
+
 
         // Última fecha eliminada (undefined)
         output.pop()
+
+        console.log(output)
 
         Object.values(output).forEach(d => {
 

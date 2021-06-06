@@ -18,7 +18,7 @@
                     <div class="col-sm-6">
                         <div class="card-body">
                             <h3 class="card-title text-primary mt-3">Personas con Pauta Completa:</h3>
-                            <h4 class="card-title">{{arrPersonaCom[0].total}} ({{porcentaje[0]}})</h4>
+                            <h4 class="card-title">{{arrPersonaCom[0].total}} ({{porcentaje}}%)</h4>
                         </div>
                     </div>
                 </div>
@@ -31,6 +31,7 @@
             <div class="col">
                 <bar-chart
                 :vacunasAdmin="dataChart"
+                :pautaComp="dataChart2"
                 >
                 </bar-chart>
             </div>
@@ -63,6 +64,7 @@ export default {
         return {
             loading: true,
             dataChart: [],
+            dataChart2: [],
             porcentaje: [],
             douColors: {
                 backgroundColor: ["#339AF7", "#f79d65", "#EC3D67", "#69c26a"] 
@@ -143,6 +145,8 @@ export default {
         // Bucle para agregar las ultimas dosis de cada comunidad en un array
         for (let i = 2; i < 21; i++) {
             this.dataChart.push(this.arrDosis[i].total.replace('.',""));
+            this.dataChart2.push(this.arrPersonaCom[i].total.replace('.',""));
+
         }
 
         // Bucle para eliminar números con más de un punto
@@ -152,13 +156,25 @@ export default {
             }
         }
 
+        for (let i = 0; i < this.dataChart2.length; i++) {
+            if(this.dataChart2[i].includes(".")){
+                this.dataChart2[i] = this.dataChart2[i].replace(".","")
+            }
+        }
+
         // Invertimos el Array para tener orden alfabético
         this.dataChart.reverse() 
+        this.dataChart2.reverse() 
 
 
-        // Asignamos el porcentaje de gente con pauta completa
-        let x = outputVacunas.reverse()
-        this.porcentaje.unshift(x[0].Porcentaje_sobre_entregadas.replace('"','%'))
+
+        // Obtenemos el porcentaje de gente con pauta completa
+        let total = this.arrPersonaCom[0].total
+
+        total = total.replace('.','')
+        this.porcentaje = Number(total.replace('.',''))
+
+        this.porcentaje = ((this.porcentaje*100)/47329981).toFixed(1);
 
 
 
