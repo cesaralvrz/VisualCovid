@@ -1,4 +1,6 @@
-# visualcovid
+# Visual Covid
+
+demo: https://kind-aryabhata-bdbd63.netlify.app/
 
 ## Project setup
 ```
