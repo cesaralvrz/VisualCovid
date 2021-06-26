@@ -190,8 +190,6 @@ export default {
         // Última fecha eliminada (undefined)
         output.pop()
 
-        console.log(output)
-
         Object.values(output).forEach(d => {
 
             var date = moment(d.fecha, "YYYY-MM-DD").format("DD/MM/YYYY");
@@ -216,6 +214,7 @@ export default {
 
         // Añadimos los valores a la gráfica de doughnut
         this.dataDou.unshift(this.arrCasosPcr[0].total, this.arrFallecimientos[0].total, this.arrUci[0].total, this.arrHospitalizados[0].total);
+        console.log(this.dataDou)
          
     },
     methods: {

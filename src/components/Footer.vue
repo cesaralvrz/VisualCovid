@@ -34,6 +34,7 @@
             <ul class="list-unstyled">
             <li class="mb-2"><a href="https://www.datadista.com/" class="text-muted" target="_blank" rel="noopener">Datadista</a></li>
             <li class="mb-2"><a href="https://github.com/datadista/datasets/tree/master/COVID%2019" class="text-muted" target="_blank" rel="noopener">Dataset</a></li>
+            <li class="mb-2"><a href="https://www.flaticon.com/" class="text-muted" target="_blank" rel="noopener">Flaticon</a></li>
             </ul>
         </div>
         </div>
